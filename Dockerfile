@@ -37,13 +37,12 @@ RUN apt-get update && apt-get install -y  \
     pip install tornado && \    
     ln -s /usr/bin/python2.7 /usr/bin/python ; ln -s -f bash /bin/sh
 
-RUN locale-gen en_US.UTF-8
-COPY ./default_locale /etc/default/locale
-RUN chmod 0755 /etc/default/locale
-
-ENV LC_ALL=en_US.UTF-8
-ENV LANG=en_US.UTF-8
-ENV LANGUAGE=en_US.UTF-8
+# Set the locale
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    locale-gen
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 WORKDIR /opt
 
