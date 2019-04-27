@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y  \
     libatlas3-base \
     libgstreamer1.0-dev \
     libtool-bin \
+    locales \
     make \
     python2.7 \
     python3 \
@@ -35,6 +36,14 @@ RUN apt-get update && apt-get install -y  \
     pip install ws4py==0.3.2 && \
     pip install tornado && \    
     ln -s /usr/bin/python2.7 /usr/bin/python ; ln -s -f bash /bin/sh
+
+RUN locale-gen en_US.UTF-8
+COPY ./default_locale /etc/default/locale
+RUN chmod 0755 /etc/default/locale
+
+ENV LC_ALL=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
 
 WORKDIR /opt
 
