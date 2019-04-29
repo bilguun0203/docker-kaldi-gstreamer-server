@@ -1,5 +1,5 @@
 # docker-kaldi-gstreamer-server
-Dockerfile for [kaldi-gstreamer-server](https://github.com/alumae/kaldi-gstreamer-server).
+Dockerfile for [kaldi-gstreamer-server](https://github.com/bilguun0203/kaldi-gstreamer-server).
 
 Synopsis
 --------
@@ -29,13 +29,13 @@ Get the image
 
 * Pull the image from Docker Hub (~ 900MB):
 
-`docker pull jcsilva/docker-kaldi-gstreamer-server`
+`docker pull bilguun0203/docker-kaldi-gstreamer-server`
 
 * Or you may build your own image (requires git):
 
-`docker build -t kaldi-gstreamer-server:1.0 https://github.com/jcsilva/docker-kaldi-gstreamer-server.git`
+`docker build -t kaldi-gstreamer-server:1.0 https://github.com/bilguun0203/docker-kaldi-gstreamer-server.git`
 
-In the next sections I'll assume you pulled the image from Docker Hub. If you have built your own image, simply change *jcsilva/docker-kaldi-gstreamer-server:latest* by your image name when appropriate.
+In the next sections I'll assume you pulled the image from Docker Hub. If you have built your own image, simply change *bilguun0203/docker-kaldi-gstreamer-server:latest* by your image name when appropriate.
 
 
 How to use
@@ -48,7 +48,7 @@ It's possible to use the same docker in two scenarios. You may create the master
 Assuming that your kaldi models are located at /media/kaldi_models on your host machine, create a container:
 
 ```
-docker run -it -p 8080:80 -v /media/kaldi_models:/opt/models jcsilva/docker-kaldi-gstreamer-server:latest /bin/bash
+docker run -it -p 8080:80 -v /media/kaldi_models:/opt/models bilguun0203/docker-kaldi-gstreamer-server:latest /bin/bash
 ```
 
 And, inside the container, start the service:
@@ -69,7 +69,7 @@ For stopping the servers, you may execute the following command inside your cont
 Assuming that your kaldi models are located at /media/kaldi_models on your host machine, create a container:
 
 ```
-docker run -it -v /media/kaldi_models:/opt/models jcsilva/docker-kaldi-gstreamer-server:latest /bin/bash
+docker run -it -v /media/kaldi_models:/opt/models bilguun0203/docker-kaldi-gstreamer-server:latest /bin/bash
 ```
 
 And, inside the container, start the service:
@@ -148,7 +148,7 @@ sed -i 's:full-post-processor:#full-post-processor:g' /media/kaldi_models/sample
 
 4) Instantiate master and worker on the same machine:
 ```
-docker run -it -p 8080:80 -v /media/kaldi_models:/opt/models jcsilva/docker-kaldi-gstreamer-server:latest /bin/bash
+docker run -it -p 8080:80 -v /media/kaldi_models:/opt/models bilguun0203/docker-kaldi-gstreamer-server:latest /bin/bash
 ```
 
 5) Inside the docker container, start the service:
